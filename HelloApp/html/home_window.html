@@ -68,7 +68,7 @@
       <!-- 第一头部 -->	
       <div id="firstHeader" class="titlebar activebar">	
         <div class="topbar">	
-          <div class="citylist fl" id="citylist" tapmode onclick="">北京<img src="../image/title_home_arrow_down_normal.png" alt="" class="citylistarrow"></div>	
+          <div class="citylist fl" id="citylist" tapmode onclick="city()">北京<img src="../image/title_home_arrow_down_normal.png" alt="" class="citylistarrow"></div>	
           <div class="search firstSearch" tapmode onclick="">	
               <img src="../image/ic_home_search.png" alt="">输入商户名、地点	
           </div>	
@@ -107,13 +107,14 @@
    var footer = $api.byId('footer');	
    var footerPos = $api.offset(footer);	
   
-	var UICityList = api.require('UICityList');
-UICityList.open({
+	
+    function city(){
+       UICityList.open({
     rect: {
         x: 0,
         y: 0,
-        w: 320,
-        h: 480
+        w: 'auto',
+        h: 'auto'
     },
     resource: 'widget://res/cityList.json',
     styles: {
@@ -153,6 +154,7 @@ UICityList.open({
          alert( JSON.stringify( err ) );
     }
 });
+    }
 
 	
 	
@@ -169,7 +171,7 @@ UICityList.open({
         var mainPos = $api.offset(main);	
         var footer = $api.byId('footer');	
         var footerPos = $api.offset(footer);	
-	
+	    UICityList = api.require('UICityList');
         api.openFrame ({	
             name: 'home_frame1',	
             url: './home_frame1.html',	
@@ -184,6 +186,7 @@ UICityList.open({
             vScrollBarEnabled:false,	
             hScrollBarEnabled:false	
         });	
+        
         
         
     };	
