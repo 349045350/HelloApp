@@ -107,6 +107,54 @@
    var footer = $api.byId('footer');	
    var footerPos = $api.offset(footer);	
   
+	var UICityList = api.require('UICityList');
+UICityList.open({
+    rect: {
+        x: 0,
+        y: 0,
+        w: 320,
+        h: 480
+    },
+    resource: 'widget://res/cityList.json',
+    styles: {
+        searchBar: {
+            bgColor: '#696969',
+            cancelColor: '#E3E3E3'
+        },
+        location: {
+            color: '#696969',
+            size: 12
+        },
+        sectionTitle: {
+            bgColor: '#eee', 
+            color: '#000',
+            size: 12
+        },
+        item: {
+            bgColor: '#fff',
+            activeBgColor: '#696969',
+            color: '#000',
+            size: 14,
+            height: 40
+        },
+        indicator: {
+            bgColor: '#fff',
+            color: '#696969'
+        }
+    },
+    currentCity: '北京',
+    locationWay: 'GPS',
+    hotTitle: '热门城市',
+    placeholder: '输入城市名或首字母查询'
+}, function( ret, err ) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+
+	
 	
     // 完成首页初始化	
     apiready = function(){	
